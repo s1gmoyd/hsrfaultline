@@ -23,7 +23,7 @@
 </script>
 
 <video id="goal-stinger" muted="muted" preload="auto">
-  <source src="/BEA-SS_transition.webm" type="video/mp4">
+  <source src="/main-stinger.webm" type="video/mp4">
 </video>
 
 <style>
