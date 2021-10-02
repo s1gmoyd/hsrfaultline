@@ -1,5 +1,5 @@
 <script>
-  import { casters, blueTeam, orangeTeam, blueTeamLogo, orangeTeamLogo, matchInfo, matchScores } from '../rocsStore'
+  import { casters, blueTeam, orangeTeam, blueTeamLogo, orangeTeamLogo, matchInfo, matchScores, blueTeamPlayersBoolList, orangeTeamPlayersBoolList  } from '../rocsStore'
 
   let numConvert = {
     1: "one",
