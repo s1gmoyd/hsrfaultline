@@ -13,6 +13,32 @@
     9: "nine"
   }
 
+  $: bluePlayers = (() => {
+    let players = [];
+    if ($blueTeam && $blueTeamPlayersBoolList) {
+      for (let i = 0; i < $blueTeam.players.length; i++) {
+        if ($blueTeamPlayersBoolList[i]) {
+          console.log($blueTeam.players[i])
+          players.push($blueTeam.players[i])
+        }
+      }
+    }
+    return players;
+  })();
+
+  $: orangePlayers = (() => {
+    let players = [];
+    if ($orangeTeam && $orangeTeamPlayersBoolList) {
+      for (let i = 0; i < $orangeTeam.players.length; i++) {
+        if ($orangeTeamPlayersBoolList[i]) {
+          console.log($orangeTeam.players[i])
+          players.push($orangeTeam.players[i])
+        }
+      }
+    }
+    return players;
+  })();
+
 </script>
 
 <div id="container">
@@ -25,12 +51,32 @@
     <img alt="blue team logo" src={$blueTeamLogo} />
   </div>
 
+  <div class="blue team rostercontainer">
+    {#if bluePlayers && bluePlayers[0]}
+      {#each bluePlayers as player,i}
+        <div class="blue team roster {numConvert[i+1]}">
+          <div class="blue team rostername">{player.ign}</div>
+        </div>
+      {/each}
+    {/if}
+  </div>
+
   <div class="info">{$matchInfo.toUpperCase()}</div>
 
   <div class="orange team name">{$orangeTeam ? $orangeTeam.name.toUpperCase() : "TO BE DETERMINED"}</div>
   <div class="orange team uni">{$orangeTeam ? $orangeTeam.organisation.name.toUpperCase() : "TO BE DETERMINED"}</div>
   <div class="orange team logo container">
     <img alt="orange team logo" src={$orangeTeamLogo} />
+  </div>
+  
+  <div class="orange team rostercontainer">
+    {#if orangePlayers && orangePlayers[0]}
+      {#each orangePlayers as player,i}
+        <div class="orange team roster {numConvert[i+1]}">
+          <div class="orange team rostername">{player.ign}</div>
+        </div>
+      {/each}
+    {/if}
   </div>
 
   <div class="score series">{$matchScores ? $matchScores.seriesScore.blueScore : "0"} - {$matchScores ? $matchScores.seriesScore.orangeScore : "0"}</div>
@@ -72,6 +118,66 @@
 
   #container div {
     position: absolute;
+  }
+
+  .roster {
+    left: 0px;
+    width: 214px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+  }
+
+  .rostername {
+    width: 190px;
+    height: 50px;
+    top: 0px;
+  }
+
+  .orange.rostername {
+    color: #2a2a2a;
+    right: 0px;
+  }
+
+  .blue.rostername {
+    color: white;
+    left: 0px;
+  }
+
+  .rostercontainer {
+    position: absolute;
+    width: 214px;
+    height: 240px;
+    top: 0px;
+  }
+
+  .blue.rostercontainer {
+    left: 0px;
+  }
+
+  .orange.rostercontainer {
+    right: 0px;
+  }
+
+  .roster.one {
+    top: 40px;
+  }
+
+  .roster.two {
+    top: 100px;
+  }
+
+  .roster.three {
+    top: 160px;
+  }
+
+  .blue.roster {
+    background-image: url('/desk-green-roster.png');
+  }
+
+  .orange.roster {
+    background-image: url('/desk-yellow-roster.png');
   }
 
   .background {
