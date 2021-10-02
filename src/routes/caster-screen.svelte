@@ -327,10 +327,10 @@
   }
 
   .score.games.blue {
-    border-bottom: 4px solid #007cc3;
+    border-bottom: 4px solid #006268;
   }
 
   .score.games.orange {
-    border-bottom: 4px solid #ed1848;
+    border-bottom: 4px solid #d4af37;
   }
 </style>
